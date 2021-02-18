@@ -149,6 +149,7 @@ struct Monitor {
 	Client *stack;
 	Monitor *next;
 	Window barwin;
+	const Layout *lt[2];
 	const Layout *lastlt;
 	Pertag *pertag;
 };
@@ -321,13 +322,12 @@ static Window root, wmcheckwin;
 /* configuration, allows nested code to access above variables */
 #include "config.h"
 
-<<<<<<< HEAD
 #ifdef VERSION
 #include "IPCClient.c"
 #include "yajl_dumps.c"
 #include "ipc.c"
 #endif
-=======
+
 struct Pertag {
 	unsigned int curtag, prevtag; /* current and previous tag */
 	int nmasters[LENGTH(tags) + 1]; /* number of windows in master area */
@@ -336,7 +336,6 @@ struct Pertag {
 	const Layout *ltidxs[LENGTH(tags) + 1][2]; /* matrix of tags and layouts indexes  */
 	int showbars[LENGTH(tags) + 1]; /* display bar for the current tag */
 };
->>>>>>> b95f862... apply pertag patch
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
